@@ -5,7 +5,6 @@ import torch
 import torchtext
 from torchtext.data import Field, LabelField, TabularDataset, BucketIterator
 
-# Sample text classification dataset
 data = {
     'text': ['This is a positive example.', 'Negative sentiment here.', 'Another positive statement.'],
     'label': [1, 0, 1]
@@ -34,7 +33,6 @@ train_iterator, test_iterator = BucketIterator.splits(
     device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 )
 
-# LSTM model
 class LSTMClassifier(nn.Module):
     def __init__(self, input_dim, embedding_dim, hidden_dim, output_dim, n_layers, bidirectional, dropout):
         super().__init__()

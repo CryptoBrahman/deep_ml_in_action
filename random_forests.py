@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# Generate sample data for classification
+# Generate data for classification
 np.random.seed(42)
 X = 2 * np.random.rand(100, 2)
 y = (X[:, 0] + X[:, 1] > 1).astype(int)
@@ -11,7 +11,7 @@ y = (X[:, 0] + X[:, 1] > 1).astype(int)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train a Random Forest classifier
+# Train classifier
 classifier = RandomForestClassifier(n_estimators=100, random_state=42)
 classifier.fit(X_train, y_train)
 

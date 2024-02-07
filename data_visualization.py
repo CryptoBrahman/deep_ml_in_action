@@ -1,7 +1,6 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Sample data
 tips = sns.load_dataset("tips")
 fmri = sns.load_dataset("fmri")
 titanic = sns.load_dataset("titanic")

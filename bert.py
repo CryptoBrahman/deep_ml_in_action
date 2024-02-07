@@ -5,7 +5,6 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
 
-# Sample text classification dataset
 data = {
     'text': ['This is a positive example.', 'Negative sentiment here.', 'Another positive statement.'],
     'label': [1, 0, 1]
@@ -13,15 +12,13 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Split the data into training and testing sets
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
 
 # Load DistilBERT tokenizer and model
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
 model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased',
                                                             num_labels=2)  # Adjust 'num_labels' based on your classification task
-
-# Tokenize and encode the training set
+# Tokenize and encode the training and testing sets
 train_texts = train_df['text'].tolist()
 train_labels = train_df['label'].tolist()
 
@@ -29,7 +26,6 @@ tokenized_train = tokenizer(train_texts, padding=True, truncation=True, return_t
 train_dataset = TensorDataset(tokenized_train['input_ids'], tokenized_train['attention_mask'],
                               torch.tensor(train_labels))
 
-# Tokenize and encode the testing set
 test_texts = test_df['text'].tolist()
 test_labels = test_df['label'].tolist()
 
@@ -40,12 +36,11 @@ test_dataset = TensorDataset(tokenized_test['input_ids'], tokenized_test['attent
 train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=8, shuffle=False)
 
-# Training loop (example, you might need to customize it based on your specific needs)
 optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
 criterion = torch.nn.CrossEntropyLoss()
 
 # Training loop
-for epoch in range(3):  # Replace 3 with the desired number of epochs
+for epoch in range(3):
     model.train()
     total_loss = 0
 
@@ -61,7 +56,7 @@ for epoch in range(3):  # Replace 3 with the desired number of epochs
     average_loss = total_loss / len(train_loader)
     print(f"Epoch {epoch + 1}, Average Loss: {average_loss}")
 
-# Evaluate on the test set
+
 model.eval()
 correct_predictions = 0
 

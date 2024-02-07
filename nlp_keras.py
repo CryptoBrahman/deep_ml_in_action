@@ -13,7 +13,7 @@ padding_type = 'post'
 oov_token = '<OOV>'
 training_size = 25000
 
-# Download and load the IMDB dataset
+# Download and load the dataset
 imdb = tf.keras.datasets.imdb
 (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=vocab_size)
 

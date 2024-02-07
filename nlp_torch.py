@@ -8,7 +8,7 @@ from torchtext.legacy import datasets
 from torchtext.vocab import GloVe
 
 
-# Define the neural network model
+# Define the model
 class SentimentModel(nn.Module):
     def __init__(self, vocab_size, embedding_dim, hidden_dim, output_dim):
         super(SentimentModel, self).__init__()

@@ -5,7 +5,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
-# Sample DataFrame
 data = {
     'Feature1': [1, 2, 3, None, 5],
     'Feature2': ['A', 'B', 'A', 'B', 'A'],
@@ -14,7 +13,6 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Separate features and target variable
 X = df.drop('Target', axis=1)
 y = df['Target']
 
@@ -43,15 +41,13 @@ preprocessor = ColumnTransformer(
         ('cat', categorical_transformer, categorical_features)
     ])
 
-# Apply the transformers to the training data
+# Apply the transformers to the training and testing data
 X_train_transformed = preprocessor.fit_transform(X_train)
 
-# Apply the transformers to the testing data
 X_test_transformed = preprocessor.transform(X_test)
 
-# Display the transformed data
 print("Transformed Training Data:")
 print(pd.DataFrame(X_train_transformed))
 
-print("\nTransformed Testing Data:")
+print("Transformed Testing Data:")
 print(pd.DataFrame(X_test_transformed))

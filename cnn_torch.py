@@ -4,7 +4,6 @@ import torch.nn as nn
 import torch.optim as optim
 from torchtext.data import Field, LabelField, TabularDataset, BucketIterator
 
-# Sample text classification dataset
 data = {
     'text': ['This is a positive example.', 'Negative sentiment here.', 'Another positive statement.'],
     'label': [1, 0, 1]

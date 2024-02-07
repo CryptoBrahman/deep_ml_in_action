@@ -6,7 +6,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
-# Sample text classification dataset
 data = {
     'text': ['This is a positive example.', 'Negative sentiment here.', 'Another positive statement.'],
     'label': [1, 0, 1]

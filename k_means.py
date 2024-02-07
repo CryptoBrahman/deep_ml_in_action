@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 np.random.seed(42)
 X = np.random.rand(100, 2)
 
-# Choose the number of clusters (K)
+# Choose the number of clusters
 k = 3
 
 # Train a K-Means model
